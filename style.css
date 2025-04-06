@@ -1,0 +1,394 @@
+:root {
+    --primary-color: #4285f4;
+    --secondary-color: #34a853;
+    --error-color: #ea4335;
+    --background-color: #f5f5f5;
+    --chat-bg-color: #ffffff;
+    --message-sent: #dcf8c6;
+    --message-received: #ffffff;
+    --text-color: #333333;
+    --border-color: #e0e0e0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 500px;
+    height: 90vh;
+    background-color: var(--chat-bg-color);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Authentication Screen Styles */
+.auth-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-container {
+    width: 85%;
+    text-align: center;
+}
+
+.auth-container h1 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 2.2rem;
+}
+
+.auth-container p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.input-group select {
+    padding: 12px;
+    border: none;
+    border-right: 1px solid var(--border-color);
+    background-color: white;
+    outline: none;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #3367d6;
+}
+
+/* OTP Form Styles */
+.otp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.otp-form p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.otp-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.otp-digit {
+    width: 40px;
+    height: 50px;
+    text-align: center;
+    font-size: 1.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    outline: none;
+}
+
+.resend-otp {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.resend-otp a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Chat Screen Styles */
+.chat-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 15px;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-phone {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.online-status {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.logout-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.chat-container {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: #e5ddd5;
+    background-image: url('https://web.whatsapp.com/img/bg-chat-tile-light_a4be512e7195b6b733d9110b408f075d.png');
+    background-repeat: repeat;
+}
+
+.welcome-message {
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.message {
+    max-width: 70%;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    word-wrap: break-word;
+    position: relative;
+}
+
+.message-sent {
+    background-color: var(--message-sent);
+    margin-left: auto;
+    border-top-right-radius: 0;
+}
+
+.message-received {
+    background-color: var(--message-received);
+    margin-right: auto;
+    border-top-left-radius: 0;
+}
+
+.message-time {
+    font-size: 0.7rem;
+    color: #666;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.message-input-container {
+    padding: 10px;
+    background-color: var(--chat-bg-color);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.new-chat-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-chat-btn:hover {
+    background-color: #f0f0f0;
+}
+
+.message-input-container input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.message-input-container button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-input-container button:hover {
+    background-color: #f0f0f0;
+}
+
+/* New Chat Modal Styles */
+.new-chat-container {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-radius: 15px 15px 0 0;
+    padding: 15px;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.new-chat-container.show {
+    transform: translateY(0);
+}
+
+.new-chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.new-chat-header h3 {
+    color: var(--text-color);
+}
+
+.close-new-chat {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.search-contact {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.search-contact input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-contact button {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.contact-info span {
+    font-weight: bold;
+}
+
+/* Utility Classes */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .app-container {
+        height: 100vh;
+        border-radius: 0;
+    }
+    
+    .otp-digit {
+        width: 35px;
+        height: 45px;
+    }
+}
