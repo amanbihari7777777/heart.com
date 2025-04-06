@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: cursive;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
