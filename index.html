@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>25 Heart Designs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .heart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .heart {
+            margin: 10px;
+        }
+        .label {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #666;
+            text-align: center;
+        }
+        
+        /* Heart 1 - Classic Heart */
+        .heart1 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(45deg);
+            position: relative;
+        }
+        .heart1:before, .heart1:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart1:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart1:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 2 - CSS Heart */
+        .heart2 {
+            width: 100px;
+            height: 90px;
+            position: relative;
+        }
+        .heart2:before, .heart2:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 50px;
+            height: 80px;
+            background: red;
+            border-radius: 50px 50px 0 0;
+        }
+        .heart2:before {
+            left: 50px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        .heart2:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+        
+        /* Heart 3 - Pixel Heart */
+        .heart3 {
+            width: 50px;
+            height: 50px;
+            background: 
+                linear-gradient(135deg, red 10px, transparent 10px) 0 0,
+                linear-gradient(225deg, red 10px, transparent 10px) 10px 0,
+                linear-gradient(315deg, red 10px, transparent 10px) 10px 10px,
+                linear-gradient(45deg, red 10px, transparent 10px) 0 10px;
+            background-size: 20px 20px;
+        }
+        
+        /* Heart 4 - Outline Heart */
+        .heart4 {
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+        .heart4:before, .heart4:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 25px;
+            height: 40px;
+            border: 2px solid red;
+            border-radius: 25px 25px 0 0;
+            background: transparent;
+        }
+        .heart4:before {
+            left: 25px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        .heart4:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+        
+        /* Heart 5 - Beating Heart */
+        .heart5 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(45deg);
+            position: relative;
+            animation: beat 1s infinite alternate;
+        }
+        .heart5:before, .heart5:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart5:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart5:after {
+            top: 0;
+            left: -25px;
+        }
+        @keyframes beat {
+            to { transform: rotate(45deg) scale(1.1); }
+        }
+        
+        /* Heart 6 - Gradient Heart */
+        .heart6 {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #ff0000, #ff6b6b);
+            transform: rotate(45deg);
+            position: relative;
+        }
+        .heart6:before, .heart6:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #ff0000, #ff6b6b);
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart6:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart6:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 7 - Diamond Heart */
+        .heart7 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(45deg) skew(10deg, 10deg);
+            position: relative;
+        }
+        .heart7:before, .heart7:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+        }
+        .heart7:before {
+            top: -25px;
+            left: 0;
+            transform: skewY(-20deg);
+        }
+        .heart7:after {
+            top: 0;
+            left: -25px;
+            transform: skewX(-20deg);
+        }
+        
+        /* Heart 8 - Circle Heart */
+        .heart8 {
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+        .heart8:before, .heart8:after {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 40px;
+            background: red;
+            border-radius: 25px 25px 0 0;
+        }
+        .heart8:before {
+            left: 25px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        .heart8:after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+        
+        /* Heart 9 - Square Heart */
+        .heart9 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(45deg);
+            position: relative;
+        }
+        .heart9:before, .heart9:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+        }
+        .heart9:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart9:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 10 - CSS Only Heart */
+        .heart10 {
+            position: relative;
+            width: 50px;
+            height: 30px;
+        }
+        .heart10:after, .heart10:before {
+            position: absolute;
+            content: "";
+            left: 25px;
+            top: 0;
+            width: 25px;
+            height: 40px;
+            background: red;
+            border-radius: 25px 25px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+        .heart10:before {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+        
+        /* Heart 11 - Small Heart */
+        .heart11 {
+            width: 25px;
+            height: 25px;
+            background-color: red;
+            transform: rotate(45deg);
+            position: relative;
+        }
+        .heart11:before, .heart11:after {
+            content: "";
+            width: 25px;
+            height: 25px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart11:before {
+            top: -12.5px;
+            left: 0;
+        }
+        .heart11:after {
+            top: 0;
+            left: -12.5px;
+        }
+        
+        /* Heart 12 - Heart with Border */
+        .heart12 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(45deg);
+            position: relative;
+            border: 2px solid darkred;
+        }
+        .heart12:before, .heart12:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            border: 2px solid darkred;
+        }
+        .heart12:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart12:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 13 - 3D Heart */
+        .heart13 {
+            width: 50px;
+            height: 50px;
+            background-color: #ff3333;
+            transform: rotate(45deg);
+            position: relative;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+        .heart13:before, .heart13:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: #ff3333;
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+        .heart13:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart13:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 14 - Heart with Shadow */
+        .heart14 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(45deg);
+            position: relative;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+        }
+        .heart14:before, .heart14:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart14:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart14:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 15 - Transparent Heart */
+        .heart15 {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255,0,0,0.5);
+            transform: rotate(45deg);
+            position: relative;
+        }
+        .heart15:before, .heart15:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255,0,0,0.5);
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart15:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart15:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 16 - Heart with Text */
+        .heart16 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(45deg);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .heart16:before, .heart16:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart16:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart16:after {
+            top: 0;
+            left: -25px;
+        }
+        .heart16 span {
+            transform: rotate(-45deg);
+            color: white;
+            font-size: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Heart 17 - Heart with Border Radius */
+        .heart17 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(45deg);
+            position: relative;
+            border-radius: 5px;
+        }
+        .heart17:before, .heart17:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart17:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart17:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 18 - Heart with Different Colors */
+        .heart18 {
+            width: 50px;
+            height: 50px;
+            background-color: #ff6b6b;
+            transform: rotate(45deg);
+            position: relative;
+        }
+        .heart18:before, .heart18:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: #ff8e8e;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart18:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart18:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 19 - Heart with Border Only */
+        .heart19 {
+            width: 50px;
+            height: 50px;
+            border: 2px solid red;
+            transform: rotate(45deg);
+            position: relative;
+        }
+        .heart19:before, .heart19:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            border: 2px solid red;
+            border-radius: 50%;
+            position: absolute;
+            background: transparent;
+        }
+        .heart19:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart19:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 20 - Heart with Different Shape */
+        .heart20 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(45deg) scale(0.8);
+            position: relative;
+        }
+        .heart20:before, .heart20:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 30% 50% 50% 30%;
+            position: absolute;
+        }
+        .heart20:before {
+            top: -25px;
+            left: 0;
+            transform: rotate(45deg);
+        }
+        .heart20:after {
+            top: 0;
+            left: -25px;
+            transform: rotate(-45deg);
+        }
+        
+        /* Heart 21 - Heart with Cut Corner */
+        .heart21 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(45deg);
+            position: relative;
+            clip-path: polygon(0% 20%, 20% 0%, 100% 0%, 100% 80%, 80% 100%, 0% 100%);
+        }
+        .heart21:before, .heart21:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: absolute;
+            clip-path: circle(50% at 50% 50%);
+        }
+        .heart21:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart21:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 22 - Heart with Rounded Bottom */
+        .heart22 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(45deg);
+            position: relative;
+            border-radius: 0 0 10px 0;
+        }
+        .heart22:before, .heart22:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart22:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart22:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 23 - Heart with Pointed Bottom */
+        .heart23 {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            transform: rotate(45deg);
+            position: relative;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 50% 100%, 0% 70%);
+        }
+        .heart23:before, .heart23:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart23:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart23:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 24 - Heart with Stripes */
+        .heart24 {
+            width: 50px;
+            height: 50px;
+            background: repeating-linear-gradient(
+                45deg,
+                red,
+                red 5px,
+                #cc0000 5px,
+                #cc0000 10px
+            );
+            transform: rotate(45deg);
+            position: relative;
+        }
+        .heart24:before, .heart24:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background: repeating-linear-gradient(
+                45deg,
+                red,
+                red 5px,
+                #cc0000 5px,
+                #cc0000 10px
+            );
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart24:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart24:after {
+            top: 0;
+            left: -25px;
+        }
+        
+        /* Heart 25 - Heart with Dots */
+        .heart25 {
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, red 20%, transparent 20%),
+                        radial-gradient(circle, red 20%, transparent 20%) 10px 10px;
+            background-size: 10px 10px;
+            transform: rotate(45deg);
+            position: relative;
+        }
+        .heart25:before, .heart25:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle, red 20%, transparent 20%),
+                        radial-gradient(circle, red 20%, transparent 20%) 10px 10px;
+            background-size: 10px 10px;
+            border-radius: 50%;
+            position: absolute;
+        }
+        .heart25:before {
+            top: -25px;
+            left: 0;
+        }
+        .heart25:after {
+            top: 0;
+            left: -25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="heart-container">
+        <div class="heart heart1"></div>
+        <div class="label">1. Classic Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart2"></div>
+        <div class="label">2. CSS Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart3"></div>
+        <div class="label">3. Pixel Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart4"></div>
+        <div class="label">4. Outline Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart5"></div>
+        <div class="label">5. Beating Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart6"></div>
+        <div class="label">6. Gradient Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart7"></div>
+        <div class="label">7. Diamond Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart8"></div>
+        <div class="label">8. Circle Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart9"></div>
+        <div class="label">9. Square Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart10"></div>
+        <div class="label">10. CSS Only Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart11"></div>
+        <div class="label">11. Small Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart12"></div>
+        <div class="label">12. Heart with Border</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart13"></div>
+        <div class="label">13. 3D Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart14"></div>
+        <div class="label">14. Heart with Shadow</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart15"></div>
+        <div class="label">15. Transparent Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart16"><span>LOVE</span></div>
+        <div class="label">16. Heart with Text</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart17"></div>
+        <div class="label">17. Heart with Border Radius</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart18"></div>
+        <div class="label">18. Different Colors</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart19"></div>
+        <div class="label">19. Border Only</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart20"></div>
+        <div class="label">20. Different Shape</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart21"></div>
+        <div class="label">21. Cut Corner</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart22"></div>
+        <div class="label">22. Rounded Bottom</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart23"></div>
+        <div class="label">23. Pointed Bottom</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart24"></div>
+        <div class="label">24. Striped Heart</div>
+    </div>
+    
+    <div class="heart-container">
+        <div class="heart heart25"></div>
+        <div class="label">25. Dotted Heart</div>
+    </div>
+</body>
+</html>
