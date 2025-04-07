@@ -1,134 +1,191 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>25 Heart Designs</title>
-    <link rel="icon" href="heart.png" type="image/png">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Background Remover</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .upload-container {
+            border: 2px dashed #ccc;
+            padding: 40px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        #preview {
+            max-width: 100%;
+            margin: 20px 0;
+            display: none;
+        }
+        #result {
+            max-width: 100%;
+            margin: 20px 0;
+            display: none;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .download-btn {
+            background-color: #2196F3;
+        }
+        .download-btn:hover {
+            background-color: #0b7dda;
+        }
+        .loading {
+            display: none;
+            margin: 20px 0;
+        }
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-    <div class="heart-container">
-        <div class="heart heart1"></div>
-        <div class="label">1. Classic Heart</div>
+    <h1>Photo Background Remover</h1>
+    <p>Upload an image to remove its background</p>
+    
+    <div class="upload-container">
+        <input type="file" id="imageInput" accept="image/*">
+        <p>or drag and drop image here</p>
     </div>
     
-    <div class="heart-container">
-        <div class="heart heart2"></div>
-        <div class="label">2. CSS Heart</div>
+    <div id="preview-container">
+        <h3>Original Image</h3>
+        <img id="preview" alt="Preview">
     </div>
     
-    <div class="heart-container">
-        <div class="heart heart3"></div>
-        <div class="label">3. Pixel Heart</div>
+    <button id="removeBgBtn" disabled>Remove Background</button>
+    
+    <div class="loading">
+        <div class="spinner"></div>
+        <p>Processing image...</p>
     </div>
     
-    <div class="heart-container">
-        <div class="heart heart4"></div>
-        <div class="label">4. Outline Heart</div>
+    <div id="result-container" style="display: none;">
+        <h3>Result</h3>
+        <img id="result" alt="Result">
+        <button class="download-btn" id="downloadBtn">Download Result</button>
     </div>
     
-    <div class="heart-container">
-        <div class="heart heart5"></div>
-        <div class="label">5. Beating Heart</div>
-    </div>
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const preview = document.getElementById('preview');
+        const removeBgBtn = document.getElementById('removeBgBtn');
+        const result = document.getElementById('result');
+        const loading = document.querySelector('.loading');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const resultContainer = document.getElementById('result-container');
+        
+        // Handle file selection
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    preview.src = event.target.result;
+                    preview.style.display = 'block';
+                    removeBgBtn.disabled = false;
+                    resultContainer.style.display = 'none';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        // Handle drag and drop
+        const uploadContainer = document.querySelector('.upload-container');
+        uploadContainer.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadContainer.style.borderColor = '#4CAF50';
+            uploadContainer.style.backgroundColor = '#e8f5e9';
+        });
+        
+        uploadContainer.addEventListener('dragleave', () => {
+            uploadContainer.style.borderColor = '#ccc';
+            uploadContainer.style.backgroundColor = '#f9f9f9';
+        });
+        
+        uploadContainer.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadContainer.style.borderColor = '#ccc';
+            uploadContainer.style.backgroundColor = '#f9f9f9';
+            
+            const file = e.dataTransfer.files[0];
+            if (file && file.type.match('image.*')) {
+                imageInput.files = e.dataTransfer.files;
+                const event = new Event('change');
+                imageInput.dispatchEvent(event);
+            }
+        });
+        
+        // Remove background button click
+        removeBgBtn.addEventListener('click', function() {
+            if (!preview.src) return;
+            
+            loading.style.display = 'block';
+            removeBgBtn.disabled = true;
+            
+            // In a real implementation, you would send the image to a backend service here
+            // For demo purposes, we'll just simulate processing with a timeout
+            setTimeout(() => {
+                // This is where you would normally get the processed image from your API
+                // For demo, we'll just use the same image with a green screen effect
+                result.src = preview.src;
+                loading.style.display = 'none';
+                result.style.display = 'block';
+                resultContainer.style.display = 'block';
+                removeBgBtn.disabled = false;
+                
+                // Scroll to result
+                resultContainer.scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        });
+        
+        // Download button
+        downloadBtn.addEventListener('click', function() {
+            if (!result.src) return;
+            
+            const link = document.createElement('a');
+            link.href = result.src;
+            link.download = 'background-removed.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
     
-    <div class="heart-container">
-        <div class="heart heart6"></div>
-        <div class="label">6. Gradient Heart</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart7"></div>
-        <div class="label">7. Diamond Heart</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart8"></div>
-        <div class="label">8. Circle Heart</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart9"></div>
-        <div class="label">9. Square Heart</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart10"></div>
-        <div class="label">10. CSS Only Heart</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart11"></div>
-        <div class="label">11. Small Heart</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart12"></div>
-        <div class="label">12. Heart with Border</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart13"></div>
-        <div class="label">13. 3D Heart</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart14"></div>
-        <div class="label">14. Heart with Shadow</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart15"></div>
-        <div class="label">15. Transparent Heart</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart16"><span>LOVE</span></div>
-        <div class="label">16. Heart with Text</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart17"></div>
-        <div class="label">17. Heart with Border Radius</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart18"></div>
-        <div class="label">18. Different Colors</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart19"></div>
-        <div class="label">19. Border Only</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart20"></div>
-        <div class="label">20. Different Shape</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart21"></div>
-        <div class="label">21. Cut Corner</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart22"></div>
-        <div class="label">22. Rounded Bottom</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart23"></div>
-        <div class="label">23. Pointed Bottom</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart24"></div>
-        <div class="label">24. Striped Heart</div>
-    </div>
-    
-    <div class="heart-container">
-        <div class="heart heart25"></div>
-        <div class="label">25. Dotted Heart</div>
-    </div>
+    <footer>
+        <p>Note: This is a frontend demo. To actually remove backgrounds, you would need to connect to a background removal API.</p>
+    </footer>
 </body>
 </html>
